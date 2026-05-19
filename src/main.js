@@ -11,7 +11,7 @@ function renderProduct(p) {
   el.style.animationDelay = `${(Number(p.id) - 1) * 80}ms`;
   el.innerHTML = `
     <div class="h-40 sm:h-44 md:h-48 bg-gray-100 overflow-hidden">
-      <img src="${p.image}" alt="${p.title}" class="product-image w-full h-full object-cover" />
+      <img src="${p.image}" alt="${p.title}" loading="lazy" decoding="async" fetchpriority="low" class="product-image w-full h-full object-cover" />
     </div>
     <div class="flex flex-1 flex-col gap-2 p-4">
       <div class="text-xs font-semibold uppercase tracking-wide text-indigo-600">${p.vendor}</div>
