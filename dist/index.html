@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MarketPro — متجر متعدد البائعين </title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+      <script type="module" crossorigin src="/assets/index-C_ziOgdj.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-D4QyrZcR.css">
+    </head>
+    <body class="antialiased bg-gray-50" data-page-action="scroll-top" style="font-family: 'Cairo', system-ui, Arial, sans-serif">
+        <div class="pointer-events-none fixed inset-0 overflow-hidden">
+            <div class="float-slow absolute -top-20 -right-24 h-72 w-72 rounded-full bg-indigo-300/20 blur-3xl"></div>
+            <div class="float-slower absolute top-48 -left-24 h-80 w-80 rounded-full bg-rose-300/15 blur-3xl"></div>
+        </div>
+
+        <header class="sticky top-0 z-40 border-b border-white/60 bg-white/75 backdrop-blur-xl shadow-sm">
+            <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md transition hover:bg-gray-100 hover:scale-105 active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                    <div class="text-2xl font-bold text-indigo-600 fade-in-up">MarketPro</div>
+                    <nav id="mainNav" class="hidden md:flex gap-4 text-sm text-gray-600">
+                        <a href="/index.html" class="transition duration-200 hover:text-indigo-600 hover:-translate-y-0.5">المتجر</a>
+                        <a href="/seller.html" class="transition duration-200 hover:text-indigo-600 hover:-translate-y-0.5">بوابة البائع</a>
+                        <a href="/checkout.html" class="transition duration-200 hover:text-indigo-600 hover:-translate-y-0.5">السلة</a>
+                    </nav>
+                </div>
+                <div class="flex items-center gap-3">
+                    <input id="searchInput" placeholder="ابحث عن منتجات" class="motion-input search-focus px-3 py-2 border border-gray-200 rounded-xl w-24 sm:w-40 md:w-52 text-sm bg-white/80 backdrop-blur-sm" />
+                    <a id="sellerPortal" class="motion-btn hidden md:inline-block px-3 py-2 bg-indigo-600 text-white rounded-xl text-sm shadow-sm" href="/seller.html">بوابة البائع</a>
+                    <button id="cartToggle" class="motion-btn relative p-2 rounded-xl transition duration-200 hover:bg-gray-100 hover:scale-105 active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M16 11V3H4v8H2v2h2a2 2 0 104 0h4a2 2 0 104 0h2v-2h-2z" />
+                        </svg>
+                        <span id="cartCount" class="absolute -top-1 -left-1 bg-rose-500 text-white text-xs px-1 rounded-full shadow-sm">0</span>
+                    </button>
+                </div>
+            </div>
+            <div id="mobileNav" class="md:hidden hidden px-4 pb-4">
+                <nav class="flex flex-col gap-2">
+                    <a href="/index.html" class="py-2 px-3 rounded hover:bg-gray-100">المتجر</a>
+                    <a href="/seller.html" class="py-2 px-3 rounded hover:bg-gray-100">بوابة البائع</a>
+                    <a href="/checkout.html" class="py-2 px-3 rounded hover:bg-gray-100">السلة</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="relative max-w-6xl mx-auto px-6 py-10">
+            <section>
+                <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+                <!-- Cart Panel -->
+                <aside id="cartPanel" class="fixed top-20 left-4 w-80 bg-white shadow-lg rounded-2xl p-4 transform -translate-x-6 opacity-0 pointer-events-none transition-all backdrop-blur-sm border border-white/70">
+                    <h3 class="font-semibold mb-3">سلة المشتريات</h3>
+                    <div id="cartItems" class="space-y-2 max-h-64 overflow-auto"></div>
+                    <div class="mt-4 flex items-center justify-between">
+                        <div class="font-semibold">المجموع:</div>
+                        <div id="cartTotal" class="font-bold">$0</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex w-full items-center justify-between gap-3">
+                            <button id="clearCartBtn" class="motion-btn hidden px-3 py-2 bg-rose-500 text-white rounded-xl">مسح السلة</button>
+                            <button id="checkoutBtn" class="motion-btn px-3 py-2 bg-indigo-600 text-white rounded-xl">الدفع</button>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </main>
+
+        <button id="pageActionBtn" class="page-action-btn fixed bottom-6 -left-4 z-50 text-sm font-semibold text-white"><span class="page-action-icon">↑</span><span>أعلى</span></button>
+
+    </body>
+</html>
