@@ -83,7 +83,7 @@ function setupPageActionButton() {
   button.setAttribute('aria-hidden', 'false');
   button.classList.remove('hidden');
   button.addEventListener('click', () => {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
   });
 }
 
