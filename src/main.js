@@ -84,7 +84,7 @@ if (mobileCartBtn) {
   mobileCartBtn.addEventListener('click', (ev) => {
     ev.preventDefault();
     if (mobileNav) mobileNav.classList.add('hidden');
-    // Open the cart contents page directly so the user always sees the products added.
+    // Match desktop cart button behavior: go to the checkout/cart page.
     window.location.href = 'checkout.html';
   });
 }
