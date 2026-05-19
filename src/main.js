@@ -10,8 +10,8 @@ function renderProduct(p) {
   el.className = 'card flex flex-col gap-3 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg';
   el.style.animationDelay = `${(Number(p.id) - 1) * 80}ms`;
   el.innerHTML = `
-    <div class="h-48 bg-gray-100 overflow-hidden">
-      <img src="${p.image}" alt="${p.title}" class="product-image h-full w-full object-cover" />
+    <div class="h-40 sm:h-44 md:h-48 bg-gray-100 overflow-hidden">
+      <img src="${p.image}" alt="${p.title}" class="product-image w-full h-full object-cover" />
     </div>
     <div class="flex flex-1 flex-col gap-2 p-4">
       <div class="text-xs font-semibold uppercase tracking-wide text-indigo-600">${p.vendor}</div>
@@ -58,6 +58,15 @@ searchInput.addEventListener('input', () => {
   products = await fetchProducts(12);
   mountProducts();
 })();
+
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileNav = document.getElementById('mobileNav');
+if (mobileMenuBtn && mobileNav) {
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+  });
+}
 
 // cart UI
 const cartToggle = document.getElementById('cartToggle');

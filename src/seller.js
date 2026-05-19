@@ -16,10 +16,10 @@ function renderList() {
   }
   list.forEach((p, i) => {
     const row = document.createElement('div');
-    row.className = 'flex items-center justify-between gap-3 p-2 bg-gray-50 rounded-xl border border-transparent transition duration-200 hover:border-indigo-200 hover:bg-indigo-50/40 hover:shadow-sm';
+    row.className = 'card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3';
     row.style.animation = 'fade-up 320ms ease both';
     row.style.animationDelay = `${i * 45}ms`;
-    row.innerHTML = `<div><div class="font-medium">${p.title}</div><div class="text-xs text-gray-500">${p.vendor} — $${p.price} — الكمية: ${p.qty ?? 1}</div></div><div class="flex gap-2"><button data-i="${i}" class="motion-btn deleteBtn px-2 py-1 text-sm bg-rose-500 text-white rounded-lg">حذف</button></div>`;
+    row.innerHTML = `<div class="flex-1"><div class="font-medium">${p.title}</div><div class="text-xs text-gray-500">${p.vendor} — $${p.price} — الكمية: ${p.qty ?? 1}</div></div><div class="flex-shrink-0 mt-2 sm:mt-0"><button data-i="${i}" class="motion-btn deleteBtn px-3 py-2 text-sm bg-rose-500 text-white rounded-lg">حذف</button></div>`;
     container.appendChild(row);
   });
   container.querySelectorAll('.deleteBtn').forEach(b => b.addEventListener('click', (e)=>{

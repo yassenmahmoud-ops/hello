@@ -24,7 +24,7 @@
           <div class="text-right">
             <button class="motion-btn px-3 py-2 bg-indigo-600 text-white rounded-xl" type="submit">أضف</button>
           </div>
-          <div class="text-right">
+          <div class="text-right sm:text-right">
             <a href="/index.html" class="motion-btn inline-flex px-3 py-2 bg-slate-200 text-slate-800 rounded-xl">المتجر</a>
           </div>
         </form>
@@ -35,7 +35,7 @@
           <h2 class="font-medium">قائمة منتجاتك</h2>
           <button id="clearSellerBtn" type="button" class="motion-btn hidden px-3 py-2 bg-rose-500 text-white rounded-xl">حذف الكل</button>
         </div>
-        <div id="sellerList" class="space-y-2"></div>
+        <div id="sellerList" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
       </section>
     </main>
     <script type="module" src="/src/seller.js"></script>

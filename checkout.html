@@ -26,10 +26,14 @@
           <input placeholder="الاسم" class="motion-input px-3 py-2 border border-gray-200 rounded-xl bg-white/90" />
           <input placeholder="البريد الإلكتروني" class="motion-input px-3 py-2 border border-gray-200 rounded-xl bg-white/90" />
           <input placeholder="العنوان" class="motion-input px-3 py-2 border border-gray-200 rounded-xl bg-white/90" />
-          <div class="flex w-full items-center justify-between gap-3 flex-wrap flex-row-reverse">
-            <a href="/index.html" class="motion-btn px-3 py-2 bg-slate-200 text-slate-800 rounded-xl">المتجر</a>
-            <button id="clearCheckoutBtn" type="button" class="motion-btn hidden px-3 py-2 bg-rose-500 text-white rounded-xl">حذف الكل</button>
-            <button id="placeOrder" class="motion-btn px-3 py-2 bg-indigo-600 text-white rounded-xl">إتمام الطلب</button>
+          <div class="flex w-full items-center justify-between gap-3 flex-wrap flex-row-reverse sm:flex-row">
+            <div class="flex gap-2 w-full sm:w-auto justify-end">
+              <a href="/index.html" class="motion-btn px-3 py-2 bg-slate-200 text-slate-800 rounded-xl">المتجر</a>
+              <button id="clearCheckoutBtn" type="button" class="motion-btn hidden px-3 py-2 bg-rose-500 text-white rounded-xl">حذف الكل</button>
+            </div>
+            <div class="w-full sm:w-auto flex justify-start sm:justify-end">
+              <button id="placeOrder" class="motion-btn px-3 py-2 bg-indigo-600 text-white rounded-xl">إتمام الطلب</button>
+            </div>
           </div>
         </form>
       </section>
