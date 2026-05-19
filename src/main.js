@@ -84,26 +84,8 @@ if (mobileCartBtn) {
   mobileCartBtn.addEventListener('click', (ev) => {
     ev.preventDefault();
     if (mobileNav) mobileNav.classList.add('hidden');
-    updateCartUI();
-    // Try the toggle button first (keeps behavior consistent)
-    try {
-      const cartToggleBtn = document.getElementById('cartToggle');
-      if (cartToggleBtn) {
-        cartToggleBtn.click();
-      }
-      // As a fallback ensure the panel has the open class and is interactive
-      if (cartPanel && !cartPanel.classList.contains('cart-open')) {
-        cartPanel.classList.add('cart-open');
-      }
-      if (cartPanel) {
-        cartPanel.style.pointerEvents = 'auto';
-        cartPanel.style.opacity = '1';
-        cartPanel.style.transform = 'translateX(0)';
-        cartPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    } catch (e) {
-      // ignore
-    }
+    // Open the cart contents page directly so the user always sees the products added.
+    window.location.href = 'checkout.html';
   });
 }
 
@@ -138,20 +120,20 @@ function updateCartUI() {
   cartItemsEl.innerHTML = '';
   cart.items.forEach((it, index) => {
     const row = document.createElement('div');
-    row.className = 'flex items-center justify-between gap-3 p-2 bg-gray-50 rounded-xl border border-transparent transition duration-200 hover:border-indigo-200 hover:bg-indigo-50/40 hover:shadow-sm';
+    row.className = 'flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-transparent transition duration-200 hover:border-indigo-200 hover:bg-indigo-50/40 hover:shadow-sm';
     row.style.animation = 'fade-up 320ms ease both';
     row.style.animationDelay = `${index * 45}ms`;
     row.innerHTML = `
-      <div class="text-sm">
+      <div class="text-sm leading-6">
         ${it.product.title}
         <div class="text-xs text-gray-500">${it.product.vendor} — $${it.product.price}</div>
       </div>
-      <div class="flex items-center gap-2">
-        <button data-id="${it.product.id}" class="motion-btn decrease px-2 py-1 bg-gray-100 rounded-lg">-</button>
-        <div class="px-2">${it.qty}</div>
-        <button data-id="${it.product.id}" class="motion-btn increase px-2 py-1 bg-gray-100 rounded-lg">+</button>
-        <div class="font-semibold pr-3">$${it.product.price * it.qty}</div>
-        <button data-id="${it.product.id}" class="motion-btn remove px-2 py-1 bg-rose-500 text-white rounded-lg">حذف</button>
+      <div class="flex w-full sm:w-auto flex-wrap items-center gap-2 sm:justify-end">
+        <button data-id="${it.product.id}" class="motion-btn decrease min-w-10 px-3 py-2 bg-gray-100 rounded-lg">-</button>
+        <div class="min-w-10 px-3 py-2 text-center rounded-lg bg-white border border-gray-200">${it.qty}</div>
+        <button data-id="${it.product.id}" class="motion-btn increase min-w-10 px-3 py-2 bg-gray-100 rounded-lg">+</button>
+        <div class="font-semibold px-2 sm:pr-3">$${it.product.price * it.qty}</div>
+        <button data-id="${it.product.id}" class="motion-btn remove flex-1 sm:flex-none px-3 py-2 bg-rose-500 text-white rounded-lg">حذف</button>
       </div>
     `;
     cartItemsEl.appendChild(row);
@@ -214,12 +196,7 @@ function updateCartUI() {
 }
 
 cartToggle.addEventListener('click', () => {
-  if (cartPanel.classList.contains('cart-open')) {
-    cartPanel.classList.remove('cart-open');
-  } else {
-    updateCartUI();
-    cartPanel.classList.add('cart-open');
-  }
+  window.location.href = 'checkout.html';
 });
 
 // init cart UI
@@ -244,6 +221,50 @@ if (checkoutBtn) {
     if (cartPanel) cartPanel.classList.remove('cart-open');
     // small delay to allow close animation then navigate
     setTimeout(() => { window.location.href = 'checkout.html'; }, 120);
+  });
+}
+
+// Contact form -> opens the user's email client with a prefilled message
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const nameEl = document.getElementById('contactName');
+    const emailEl = document.getElementById('contactEmail');
+    const subjectEl = document.getElementById('contactSubject');
+    const messageEl = document.getElementById('contactMessage');
+
+    const name = nameEl?.value.trim() || 'بدون اسم';
+    const email = emailEl?.value.trim() || 'بدون بريد';
+    const subject = subjectEl?.value.trim() || 'رسالة من موقع MarketPro';
+    const message = messageEl?.value.trim() || 'لا توجد رسالة';
+
+    const body = [
+      `الاسم: ${name}`,
+      `البريد: ${email}`,
+      '',
+      message,
+    ].join('\n');
+
+    const mailto = `mailto:contact@marketpro.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    contactForm.reset();
+    showToast('تم تجهيز الرسالة وفتح البريد');
+    setTimeout(() => {
+      window.location.href = mailto;
+    }, 120);
+  });
+}
+
+const copyEmailBtn = document.getElementById('copyEmailBtn');
+if (copyEmailBtn) {
+  copyEmailBtn.addEventListener('click', async () => {
+    const email = 'contact@marketpro.com';
+    try {
+      await navigator.clipboard.writeText(email);
+      showToast('تم نسخ الإيميل');
+    } catch {
+      showToast('تعذر نسخ الإيميل');
+    }
   });
 }
 

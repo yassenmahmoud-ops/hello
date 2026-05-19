@@ -281,6 +281,7 @@
 	.motion-btn { padding: 0.5rem 0.75rem; font-size: 14px; }
 	.page-action-btn { padding: 0.6rem 0.85rem; }
 	.product-image { transition: transform 380ms ease, filter 380ms ease; }
+	#cartPanel .flex.w-full.sm\:w-auto, #cartPanel .flex.w-full { width: 100%; }
 }
 
 /* Slightly reduce base font-size on very small screens for better fit */
