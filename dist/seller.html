@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>بوابة البائع — MarketPro</title>
+    <script type="module" crossorigin src="./assets/seller-YylnnGSj.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/ui-Bnx5roY0.js">
+    <link rel="stylesheet" crossorigin href="./assets/ui-ClldR654.css">
+  </head>
+  <body class="font-sans bg-gray-50" data-page-action="back-store">
+    <div class="pointer-events-none fixed inset-0 overflow-hidden">
+      <div class="ambient-gradient"></div>
+    </div>
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 p-6 space-y-6">
+      <div class="lift-in mb-4 flex items-center justify-between gap-3 flex-wrap">
+        <h1 class="text-2xl font-semibold">بوابة البائع</h1>
+      </div>
+      <section class="motion-panel lift-in bg-white p-4 rounded-2xl mb-6">
+        <h2 class="font-medium mb-2">أضف منتجًا جديدًا</h2>
+        <form id="addProductForm" class="grid grid-cols-1 gap-3">
+          <input id="pTitle" placeholder="اسم المنتج" class="motion-input px-3 py-2 border border-gray-200 rounded-xl bg-white/90" />
+          <input id="pPrice" placeholder="السعر" type="number" class="motion-input px-3 py-2 border border-gray-200 rounded-xl bg-white/90" />
+          <input id="pVendor" placeholder="اسم المتجر" class="motion-input px-3 py-2 border border-gray-200 rounded-xl bg-white/90" />
+          <input id="pQty" placeholder="الكمية (مثال: 10)" type="number" min="1" class="motion-input px-3 py-2 border border-gray-200 rounded-xl bg-white/90" />
+          <div class="text-right">
+            <button class="motion-btn px-3 py-2 bg-indigo-600 text-white rounded-xl" type="submit">أضف</button>
+          </div>
+          <div class="text-right sm:text-right">
+            <a href="index.html" class="motion-btn inline-flex px-3 py-2 bg-slate-200 text-slate-800 rounded-xl">المتجر</a>
+          </div>
+        </form>
+      </section>
+
+      <section class="motion-panel lift-in bg-white p-4 rounded-2xl">
+        <div class="mb-3 flex items-center justify-between gap-3 flex-wrap">
+          <h2 class="font-medium">قائمة منتجاتك</h2>
+          <button id="clearSellerBtn" type="button" class="motion-btn hidden px-3 py-2 bg-rose-500 text-white rounded-xl">حذف الكل</button>
+        </div>
+        <div id="sellerList" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+      </section>
+    </main>
+  </body>
+</html>
