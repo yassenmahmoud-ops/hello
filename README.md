@@ -1,7 +1,7 @@
 MarketPro — متجر متعدد البائعين (واجهة أمامية)
 
 مشروع عرضي احترافي لبورتفوليو يقدّم واجهة متجر متعددة البائعين مبسطة باستخدام:
-- HTML + Tailwind CSS + TypeScript + Vite
+- HTML + Tailwind CSS + JavaScript + Vite
 
 التشغيل محليًا:
 ```bash
