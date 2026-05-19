@@ -15,21 +15,19 @@
         </div>
 
         <header class="sticky top-0 z-40 border-b border-white/60 bg-white/75 backdrop-blur-xl shadow-sm">
-            <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
                 <div class="flex items-center gap-4">
                     <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md transition hover:bg-gray-100 hover:scale-105 active:scale-95">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                     <div class="text-2xl font-bold text-indigo-600 fade-in-up">MarketPro</div>
                     <nav id="mainNav" class="flex flex-wrap gap-4 text-sm text-gray-600">
-                        <a href="index.html" class="transition duration-200 hover:text-indigo-600 hover:-translate-y-0.5">المتجر</a>
-                        <a href="seller.html" class="transition duration-200 hover:text-indigo-600 hover:-translate-y-0.5">بوابة البائع</a>
-                        <a href="checkout.html" class="transition duration-200 hover:text-indigo-600 hover:-translate-y-0.5">السلة</a>
+                        <!-- Navigation removed per request -->
                     </nav>
                 </div>
                 <div class="flex items-center gap-3">
-                    <input id="searchInput" placeholder="ابحث عن منتجات" class="motion-input search-focus px-3 py-2 border border-gray-200 rounded-xl w-24 sm:w-40 md:w-52 text-sm bg-white/80 backdrop-blur-sm" />
-                    <a id="sellerPortal" class="motion-btn inline-block px-3 py-2 bg-indigo-600 text-white rounded-xl text-sm shadow-sm" href="seller.html">بوابة البائع</a>
+                    <input id="searchInput" placeholder="ابحث عن منتجات" class="motion-input search-focus px-3 py-2 border border-gray-200 rounded-xl w-24 sm:w-40 md:w-52 text-sm bg-white/80 backdrop-blur-sm" aria-label="ابحث عن منتجات" />
+                    <!-- Seller portal removed from header -->
                     <button id="cartToggle" class="motion-btn relative p-2 rounded-xl transition duration-200 hover:bg-gray-100 hover:scale-105 active:scale-95">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M16 11V3H4v8H2v2h2a2 2 0 104 0h4a2 2 0 104 0h2v-2h-2z" />
@@ -40,14 +38,14 @@
             </div>
             <div id="mobileNav" class="md:hidden hidden px-4 pb-4">
                 <nav class="flex flex-col gap-2">
-                    <a href="index.html" class="py-2 px-3 rounded hover:bg-gray-100">المتجر</a>
-                    <a href="seller.html" class="py-2 px-3 rounded hover:bg-gray-100">بوابة البائع</a>
-                    <a href="checkout.html" class="py-2 px-3 rounded hover:bg-gray-100">السلة</a>
+                    <button id="mobileStoreBtn" class="motion-btn w-full text-right px-3 py-2 bg-slate-100 rounded-xl">المتجر</button>
+                    <button id="mobileCartBtn" class="motion-btn w-full text-right px-3 py-2 bg-indigo-50 rounded-xl">السلة</button>
+                    <button id="mobileCheckoutBtn" class="motion-btn w-full text-right px-3 py-2 bg-indigo-600 text-white rounded-xl">الدفع</button>
                 </nav>
             </div>
         </header>
 
-        <main class="relative max-w-6xl mx-auto px-6 py-10">
+        <main class="relative max-w-6xl mx-auto px-4 sm:px-6 py-8">
             <section>
                 <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
                 <!-- Cart Panel -->

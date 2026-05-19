@@ -68,6 +68,53 @@ if (mobileMenuBtn && mobileNav) {
   });
 }
 
+// Mobile nav action buttons
+const mobileStoreBtn = document.getElementById('mobileStoreBtn');
+const mobileCartBtn = document.getElementById('mobileCartBtn');
+const mobileCheckoutBtn = document.getElementById('mobileCheckoutBtn');
+
+if (mobileStoreBtn) {
+  mobileStoreBtn.addEventListener('click', () => {
+    if (mobileNav) mobileNav.classList.add('hidden');
+    window.location.href = 'index.html';
+  });
+}
+
+if (mobileCartBtn) {
+  mobileCartBtn.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    if (mobileNav) mobileNav.classList.add('hidden');
+    updateCartUI();
+    // Try the toggle button first (keeps behavior consistent)
+    try {
+      const cartToggleBtn = document.getElementById('cartToggle');
+      if (cartToggleBtn) {
+        cartToggleBtn.click();
+      }
+      // As a fallback ensure the panel has the open class and is interactive
+      if (cartPanel && !cartPanel.classList.contains('cart-open')) {
+        cartPanel.classList.add('cart-open');
+      }
+      if (cartPanel) {
+        cartPanel.style.pointerEvents = 'auto';
+        cartPanel.style.opacity = '1';
+        cartPanel.style.transform = 'translateX(0)';
+        cartPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } catch (e) {
+      // ignore
+    }
+  });
+}
+
+if (mobileCheckoutBtn) {
+  mobileCheckoutBtn.addEventListener('click', () => {
+    if (mobileNav) mobileNav.classList.add('hidden');
+    if (cartPanel) cartPanel.classList.remove('cart-open');
+    setTimeout(() => { window.location.href = 'checkout.html'; }, 120);
+  });
+}
+
 // cart UI
 const cartToggle = document.getElementById('cartToggle');
 const cartCount = document.getElementById('cartCount');
@@ -75,6 +122,7 @@ const cartPanel = document.getElementById('cartPanel');
 const cartItemsEl = document.getElementById('cartItems');
 const cartTotalEl = document.getElementById('cartTotal');
 const clearCartBtn = document.getElementById('clearCartBtn');
+const checkoutBtn = document.getElementById('checkoutBtn');
 
 // Always start with the cart panel closed on page load.
 if (cartPanel) {
@@ -156,6 +204,13 @@ function updateCartUI() {
     });
   });
   cartTotalEl.textContent = `$${cart.total()}`;
+  // Show checkout button only when cart has items
+  if (checkoutBtn) {
+    checkoutBtn.classList.toggle('hidden', cart.items.length === 0);
+  }
+  // mobile checkout visibility
+  const mobileCheckoutBtnEl = document.getElementById('mobileCheckoutBtn');
+  if (mobileCheckoutBtnEl) mobileCheckoutBtnEl.classList.toggle('hidden', cart.items.length === 0);
 }
 
 cartToggle.addEventListener('click', () => {
@@ -180,6 +235,15 @@ if (clearCartBtn) {
       showToast('تم مسح السلة');
       pulseElement(document.getElementById('cartCount'));
     });
+  });
+}
+
+// Checkout button navigates to checkout page
+if (checkoutBtn) {
+  checkoutBtn.addEventListener('click', () => {
+    if (cartPanel) cartPanel.classList.remove('cart-open');
+    // small delay to allow close animation then navigate
+    setTimeout(() => { window.location.href = 'checkout.html'; }, 120);
   });
 }
 

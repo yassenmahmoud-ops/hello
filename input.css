@@ -74,6 +74,7 @@
 	position: relative;
 	overflow: hidden;
 }
+.motion-btn { min-height: 40px; }
 .motion-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18); }
 .motion-btn:active { transform: translateY(0) scale(0.98); }
 .motion-btn::after {
@@ -280,6 +281,11 @@
 	.motion-btn { padding: 0.5rem 0.75rem; font-size: 14px; }
 	.page-action-btn { padding: 0.6rem 0.85rem; }
 	.product-image { transition: transform 380ms ease, filter 380ms ease; }
+}
+
+/* Slightly reduce base font-size on very small screens for better fit */
+@media (max-width: 420px) {
+	html { font-size: 14px; }
 }
 
 /* Ensure images never overflow their containers */
